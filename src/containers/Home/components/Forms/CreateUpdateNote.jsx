@@ -3,23 +3,12 @@ import styled, { css } from "styled-components";
 import { useDispatch } from "react-redux";
 import { addNote, updateNote } from "../../../../Redux/Actions/noteActions";
 
-const initialState = {
-  title: "",
-  description: "",
-};
-
 const CreateNote = ({ close, operation, updateItem }) => {
   const dispatch = useDispatch();
-  const [state, setState] = useState(initialState);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleInput = (e) => {
-    const inputName = e.currentTarget.name;
-    const value = e.currentTarget.value;
-
-    setState((prev) => ({ ...prev, [inputName]: value }));
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
 

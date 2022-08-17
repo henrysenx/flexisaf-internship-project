@@ -55,8 +55,6 @@ const Dashboard = () => {
     setShowDeleteDesc(true);
   };
 
-  console.log(searchText);
-
   const handleNoteDelete = (item) => {
     const data = {
       itemId: item.id,
@@ -82,11 +80,13 @@ const Dashboard = () => {
   };
 
   const handleSearch = () => {
-    const result = allNotes.filter((notes) => {
-      return notes.item.toLowerCase().includes(searchText.toLowerCase());
-    });
+    if (notes.item !== null) {
+      const result = allNotes.filter((notes) => {
+        return notes.item.toLowerCase().includes(searchText.toLowerCase());
+      });
 
-    setResults(result);
+      setResults(result);
+    }
   };
 
   useEffect(() => {
@@ -100,8 +100,6 @@ const Dashboard = () => {
   useEffect(() => {
     handleSearch();
   }, [searchText]);
-
-  console.log(results);
 
   return (
     <Section>
@@ -134,9 +132,11 @@ const Dashboard = () => {
               </div>
             )}
 
-            <div onClick={() => setOpen(true)} className="addTitleBtn">
-              <BiPlus size={30} />
-            </div>
+            {selectedNote.items !== undefined && (
+              <div onClick={() => setOpen(true)} className="addTitleBtn">
+                <BiPlus size={30} />
+              </div>
+            )}
           </div>
           <div className="note_content">
             {searchText === null && selectedItem !== null && (
