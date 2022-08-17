@@ -75,7 +75,6 @@ export const deleteNoteDesc = (data) => {
 };
 
 export const selectNote = (note) => {
-  console.log(note);
   return (dispatch) => {
     dispatch({
       type: NOTE_SELECTED,

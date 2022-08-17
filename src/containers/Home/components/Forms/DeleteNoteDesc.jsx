@@ -9,8 +9,6 @@ import {
 const DeleteNoteDesc = ({ close, deleteItem, removeNote, setSelectedItem }) => {
   const dispatch = useDispatch();
 
-  console.log(deleteItem);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 

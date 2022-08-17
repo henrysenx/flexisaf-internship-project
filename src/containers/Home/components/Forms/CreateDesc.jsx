@@ -7,7 +7,6 @@ const CreateNoteDesc = ({ close, selectedItem }) => {
   const dispatch = useDispatch();
 
   const [description, setDescription] = useState("");
-  console.log(selectedItem);
 
   const handleSubmit = (e) => {
     e.preventDefault();

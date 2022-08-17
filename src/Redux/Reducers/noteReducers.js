@@ -37,7 +37,6 @@ const noteReducer = (state = initialState, action) => {
       };
 
     case UPDATE_NOTE:
-      console.log(action.payload);
       return {
         ...state,
         notes: state.notes.map((note) => {
