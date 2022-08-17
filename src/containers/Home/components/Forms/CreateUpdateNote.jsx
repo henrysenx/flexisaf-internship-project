@@ -56,7 +56,9 @@ const CreateNote = ({ close, operation, updateItem }) => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <h3 className="header">Contact Form</h3>
+      <h3 className="header">
+        {operation === "create" ? "Create Form" : "Update Form"}
+      </h3>
       <label htmlFor="title">Title</label>
       <StyledInput
         type="text"
