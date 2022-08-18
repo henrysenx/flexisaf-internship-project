@@ -327,7 +327,7 @@ const Section = styled.section`
     .row__one {
       display: grid;
       grid-template-columns: 500px 4fr;
-      height: 83vh;
+      height: 85vh;
       /* width: 100%; */
       /* background-color: black; */
     }
@@ -347,7 +347,6 @@ const Section = styled.section`
       padding: 0 5px;
       cursor: pointer;
       position: relative;
-      overflow-y: scroll;
     }
     .note_content {
       /* background-color: #212121; */
@@ -448,8 +447,7 @@ const Section = styled.section`
       font-size: 15px;
     }
     .addItemBtn button:hover {
-      background:  ${(props) =>
-        props.theme === "dark" ? `gray` : "#F5F5F5"}; gray;
+      background: ${(props) => (props.theme === "dark" ? `gray` : "#F5F5F5")};
     }
     .icon {
       margin-right: 10px;
