@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import LoginForm from "./Login";
 import { motion } from "framer-motion";
-
 import SignUpForm from "./signUp";
+import { Toggle } from "../Home/components/Toggle";
+import { useDarkMode } from "../styles/useDarkMode";
+import { lightTheme, darkTheme } from "../styles/globalStyles";
+import styled, { ThemeProvider } from "styled-components";
 
 const BoxContainer = styled.div`
   width: 350px;
@@ -123,34 +125,57 @@ const AccountBox = (props) => {
   };
 
   return (
-    <BoxContainer>
-      <TopContainer>
-        <BackDrop
-          initial={false}
-          animate={isExpanded ? "expanded" : "collapsed"}
-          variants={backdropVariants}
-          transition={expandingTransition}
-        />
-        {active === "signin" && (
-          <HeaderContainer>
-            <HeaderText>Welcome</HeaderText>
-            <HeaderText>Back</HeaderText>
-            <SmallText>Please sign-in to continue!</SmallText>
-          </HeaderContainer>
-        )}
-        {active === "signup" && (
-          <HeaderContainer>
-            <HeaderText>Create</HeaderText>
-            <HeaderText>Account</HeaderText>
-            <SmallText>Please sign-up to continue!</SmallText>
-          </HeaderContainer>
-        )}
-      </TopContainer>
-      <InnerContainer>
-        {active === "signin" && <LoginForm switchToSignup={switchToSignup} />}
-        {active === "signup" && <SignUpForm switchToSignin={switchToSignin} />}
-      </InnerContainer>
-    </BoxContainer>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <BoxContainer>
+        <TopContainer>
+          <BackDrop
+            initial={false}
+            animate={isExpanded ? "expanded" : "collapsed"}
+            variants={backdropVariants}
+            transition={expandingTransition}
+          />
+
+          {/* <Toggle theme={theme} toggleTheme={toggleTheme} /> */}
+
+          {active === "signin" && (
+            <HeaderContainer>
+              <HeaderText>Welcome</HeaderText>
+              <HeaderText>Back</HeaderText>
+              <SmallText>Please sign-in to continue!</SmallText>
+            </HeaderContainer>
+          )}
+          {active === "signup" && (
+            <HeaderContainer>
+              <HeaderText>Create</HeaderText>
+              <HeaderText>Account</HeaderText>
+              <SmallText>Please sign-up to continue!</SmallText>
+            </HeaderContainer>
+          )}
+        </TopContainer>
+        <InnerContainer>
+          {active === "signin" && <LoginForm switchToSignup={switchToSignup} />}
+          {active === "signup" && (
+            <SignUpForm switchToSignin={switchToSignin} />
+          )}
+        </InnerContainer>
+      </BoxContainer>
+      <div
+        style={{
+          marginTop: "10px",
+          padding: "20px 0",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Toggle />
+      </div>
+    </div>
   );
 };
 

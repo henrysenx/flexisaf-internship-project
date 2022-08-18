@@ -7,12 +7,14 @@ import {
   ADD_NOTE_DESCRIPTION,
   DELETE_NOTE_DESCRIPTION,
   FILTER_NOTES,
+  TOGGLE_THEME,
 } from "../types";
 
 const initialState = {
   notes: [],
   selectedNote: {},
   searchText: "",
+  theme: "dark",
 };
 
 const noteReducer = (state = initialState, action) => {
@@ -130,6 +132,11 @@ const noteReducer = (state = initialState, action) => {
       return {
         ...state,
         searchText: action.payload,
+      };
+    case TOGGLE_THEME:
+      return {
+        ...state,
+        theme: action.payload,
       };
 
     default:

@@ -7,6 +7,7 @@ import {
   ADD_NOTE_DESCRIPTION,
   DELETE_NOTE_DESCRIPTION,
   FILTER_NOTES,
+  TOGGLE_THEME,
 } from "../types";
 
 import noteData from "../data";
@@ -79,6 +80,15 @@ export const selectNote = (note) => {
     dispatch({
       type: NOTE_SELECTED,
       payload: note,
+    });
+  };
+};
+
+export const toggleTheme = (theme) => {
+  return (dispatch) => {
+    dispatch({
+      type: TOGGLE_THEME,
+      payload: theme,
     });
   };
 };

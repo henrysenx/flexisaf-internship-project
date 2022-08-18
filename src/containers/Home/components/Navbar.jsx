@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { filterNote } from "../../../Redux/Actions/noteActions";
+import { Toggle } from "./Toggle";
 
 const Nav = styled.nav`
   display: flex;
@@ -19,12 +20,14 @@ const Nav = styled.nav`
     }
   }
   .search {
-    background-color: #212121;
+    background-color: ${(props) =>
+      props.theme === "dark" ? `#212121` : "#F5F5F5"};
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 1rem 8rem 1rem 1rem;
     border-radius: 1rem;
+    margin-right: 10px;
     svg {
       color: #ffc107;
     }
@@ -62,6 +65,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState(null);
   const name = localStorage.getItem("username");
+  const { theme } = useSelector((state) => state.NoteReducer);
 
   const handleSearch = () => {
     dispatch(filterNote(searchText));
@@ -72,20 +76,23 @@ const Navbar = () => {
   }, [searchText]);
 
   return (
-    <Nav>
+    <Nav theme={theme}>
       <div className="title">
         <h4>Hi {name},</h4>
         <h1>
           Welcome to <span>YOUR NOTE APP</span>
         </h1>
       </div>
-      <div className="search">
-        <BiSearch />
-        <input
-          onChange={(e) => setSearchText(e.target.value)}
-          type="text"
-          placeholder="Search Note"
-        />
+      <div style={{ display: "flex" }}>
+        <div className="search">
+          <BiSearch />
+          <input
+            onChange={(e) => setSearchText(e.target.value)}
+            type="text"
+            placeholder="Search Note"
+          />
+        </div>
+        <Toggle />
       </div>
     </Nav>
   );

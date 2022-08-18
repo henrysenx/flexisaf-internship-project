@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const { notes } = useSelector((state) => state.NoteReducer);
+  const { notes, theme } = useSelector((state) => state.NoteReducer);
 
   const [currentLink, setCurrentLink] = useState(1);
   const [navbarState, setNavbarState] = useState(false);
@@ -59,7 +59,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <Section>
+      <Section theme={theme}>
         <div className="top">
           <div className="brand">
             <TbNotes />
@@ -130,7 +130,8 @@ export default Sidebar;
 const Section = styled.section`
   position: fixed;
   left: 0;
-  background-color: #212121;
+  background-color: ${(props) =>
+    props.theme === "dark" ? `#212121` : "#F5F5F5"};
   height: 100vh;
   width: 18vw;
   display: flex;
@@ -192,10 +193,10 @@ const Section = styled.section`
             text-decoration: none;
             display: flex;
             gap: 1rem;
-            color: white;
+            color: ${(props) => (props.theme === "dark" ? `#fff` : "#212121")};
           }
           p {
-            color: white;
+            color: ${(props) => (props.theme === "dark" ? `#fff` : "#212121")};
             font-size: 14px;
           }
         }

@@ -48,41 +48,44 @@ const LoginForm = ({ switchToSignup }) => {
     checkError();
   }, [email, username, password]);
   return (
-    <BoxContainer>
-      <FormContainer autoComplete="new-password">
-        <form autoComplete="new-password">
-          <Input
-            onChange={(e) => setUsername(e.target.value)}
-            type="text"
-            placeholder="Username"
-            autoComplete="new-password"
-          />
-          <Input
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            placeholder="Email"
-            autoComplete="new-password"
-          />
-          <Input
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            placeholder="Password"
-            autoComplete="new-password"
-          />
-        </form>
-      </FormContainer>
-      <Marginer direction="vertical" margin={10} />
-      <MutedLink href="#">Forget your password?</MutedLink>
-      <Marginer direction="vertical" margin="1.6em" />
-      <SubmitButton error={error} onClick={submit} type="submit">
-        Signin
-      </SubmitButton>
-      <Marginer direction="vertical" margin="1em" />
-      <MutedLink>
-        Don't have an accoun?{" "}
-        <BoldLink onClick={switchToSignup}>Signup</BoldLink>
-      </MutedLink>
-    </BoxContainer>
+    <>
+      {" "}
+      <BoxContainer>
+        <FormContainer autoComplete="new-password">
+          <form autoComplete="new-password">
+            <Input
+              onChange={(e) => setUsername(e.target.value)}
+              type="text"
+              placeholder="Username"
+              autoComplete="new-password"
+            />
+            <Input
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="Email"
+              autoComplete="new-password"
+            />
+            <Input
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder="Password"
+              autoComplete="new-password"
+            />
+          </form>
+        </FormContainer>
+        <Marginer direction="vertical" margin={10} />
+        <MutedLink href="#">Forget your password?</MutedLink>
+        <Marginer direction="vertical" margin="1.6em" />
+        <SubmitButton error={error} onClick={submit} type="submit">
+          Signin
+        </SubmitButton>
+        <Marginer direction="vertical" margin="1em" />
+        <MutedLink>
+          Don't have an accoun?{" "}
+          <BoldLink onClick={switchToSignup}>Signup</BoldLink>
+        </MutedLink>
+      </BoxContainer>
+    </>
   );
 };
 
