@@ -14,7 +14,7 @@ const initialState = {
   notes: [],
   selectedNote: {},
   searchText: "",
-  theme: "dark",
+  theme: localStorage.getItem("noteTheme"),
 };
 
 const noteReducer = (state = initialState, action) => {
@@ -134,6 +134,7 @@ const noteReducer = (state = initialState, action) => {
         searchText: action.payload,
       };
     case TOGGLE_THEME:
+      localStorage.setItem("noteTheme", action.payload);
       return {
         ...state,
         theme: action.payload,
