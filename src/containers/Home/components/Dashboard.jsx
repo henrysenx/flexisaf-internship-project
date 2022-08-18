@@ -12,7 +12,7 @@ import CreateNoteDesc from "./Forms/CreateDesc";
 import DeleteNoteDesc from "./Forms/DeleteNoteDesc";
 
 const Dashboard = () => {
-  const { selectedNote, notes, searchText } = useSelector(
+  const { selectedNote, notes, searchText, theme } = useSelector(
     (state) => state.NoteReducer
   );
   const [currentLink, setCurrentLink] = useState(0);
@@ -102,7 +102,7 @@ const Dashboard = () => {
   }, [searchText]);
 
   return (
-    <Section>
+    <Section theme={theme}>
       <Navbar />
       <div className="grid">
         <div className="row__one">
@@ -329,7 +329,7 @@ const Section = styled.section`
       grid-template-columns: 500px 4fr;
       height: 83vh;
       /* width: 100%; */
-      background-color: black;
+      /* background-color: black; */
     }
     .row__two {
       display: grid;
@@ -350,7 +350,7 @@ const Section = styled.section`
       overflow-y: scroll;
     }
     .note_content {
-      background-color: #212121;
+      /* background-color: #212121; */
       width: 100%;
       height: 100%;
       border-radius: 10px;
@@ -361,14 +361,15 @@ const Section = styled.section`
     }
     .note_card {
       padding: 35px 15px;
-      background-color: #212121;
+      background-color: ${(props) =>
+        props.theme === "dark" ? `#212121` : "#DADADA"};
       margin: 15px 0;
       border-radius: 10px;
       display: flex;
       justify-content: space-between;
     }
     .note_card h1 {
-      color: white;
+      color: ${(props) => (props.theme === "dark" ? `#fff` : "#212121")};
       font-size: 20px;
     }
     .note_card_active {
@@ -447,7 +448,8 @@ const Section = styled.section`
       font-size: 15px;
     }
     .addItemBtn button:hover {
-      background: gray;
+      background:  ${(props) =>
+        props.theme === "dark" ? `gray` : "#F5F5F5"}; gray;
     }
     .icon {
       margin-right: 10px;
@@ -501,7 +503,9 @@ const Section = styled.section`
     }
 
     .episode__content {
-      border-top: 2px solid #fff;
+      /* border-top: 2px solid #fff; */
+      border-top: ${(props) =>
+        props.theme === "dark" ? `2px solid #fff` : "2px solid #808080"};
       display: grid;
       grid-template-columns: 1fr 4fr;
       grid-gap: 10px;
@@ -509,12 +513,14 @@ const Section = styled.section`
     }
     .episode__content .title {
       font-weight: 600;
+      color: ${(props) => (props.theme === "dark" ? `#fff` : "#000")};
     }
     .episode__content .story {
       line-height: 26px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      color: ${(props) => (props.theme === "dark" ? `#fff` : "#000")};
     }
     .buttonWrapper {
       display: flex;
