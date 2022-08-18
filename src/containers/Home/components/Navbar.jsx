@@ -11,12 +11,16 @@ const Nav = styled.nav`
   color: white;
   .title {
     h1 {
+      color: ${(props) => (props.theme === "dark" ? `#F5F5F5` : "#212121")};
       span {
         margin-left: 0.5rem;
         color: #ffc107;
         font-family: "Permanent Marker", cursive;
         letter-spacing: 0.2rem;
       }
+    }
+    h4 {
+      color: ${(props) => (props.theme === "dark" ? `#F5F5F5` : "#212121")};
     }
   }
   .search {
