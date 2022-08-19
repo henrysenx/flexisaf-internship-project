@@ -159,7 +159,6 @@ const Dashboard = () => {
                     <article key={desc.id} className="episode">
                       <div className="episode__number">{index + 1}</div>
                       <div className="episode__content">
-                        <div className="title">Description</div>
                         <div className="story">
                           {desc !== null && desc.item}
                           <div className="buttonWrapper">
@@ -185,7 +184,6 @@ const Dashboard = () => {
                     <article key={desc.id} className="episode">
                       <div className="episode__number">{index + 1}</div>
                       <div className="episode__content">
-                        <div className="title">Description</div>
                         <div className="story">
                           {desc !== null && desc.item}
                           <div className="buttonWrapper">
@@ -212,7 +210,6 @@ const Dashboard = () => {
                         <article key={desc.id} className="episode">
                           <div className="episode__number">{index + 1}</div>
                           <div className="episode__content">
-                            <div className="title">Description</div>
                             <div className="story">
                               {desc.item}
                               <div className="buttonWrapper">
@@ -325,9 +322,10 @@ const Section = styled.section`
     gap: 1rem;
     margin-top: 2rem;
     .row__one {
-      display: grid;
-      grid-template-columns: 500px 4fr;
-      height: 85vh;
+      display: flex;
+      /* display: grid;
+      grid-template-columns: 500px 4fr; */
+      height: 100vh;
       /* width: 100%; */
       /* background-color: black; */
     }
@@ -457,6 +455,7 @@ const Section = styled.section`
       width: 100%;
       height: 100%;
       overflow-y: scroll;
+      margin: 10px 0;
     }
 
     .center {
@@ -470,7 +469,7 @@ const Section = styled.section`
 
     .container {
       width: 100%;
-      margin: 0 auto;
+      margin: 10px auto;
       padding: 15px 10px;
       color: #fff;
       height: 100%;
@@ -504,9 +503,10 @@ const Section = styled.section`
       /* border-top: 2px solid #fff; */
       border-top: ${(props) =>
         props.theme === "dark" ? `2px solid #fff` : "2px solid #808080"};
-      display: grid;
-      grid-template-columns: 1fr 4fr;
-      grid-gap: 10px;
+      display: flex;
+      justify-content: flex-end;
+      /* grid-template-columns: 1fr 4fr;
+      grid-gap: 10px; */
       padding: 15px 0;
     }
     .episode__content .title {
@@ -549,9 +549,25 @@ const Section = styled.section`
       font-family: "Permanent Marker", cursive;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
+      .row__one {
+        display: flex;
+        flex-direction: column;
+      }
+      .episode {
+        margin-bottom: 15px;
+      }
       .episode__content {
-        grid-template-columns: 1fr;
+        /* grid-template-columns: 1fr; */
+        padding-bottom: 10px;
+      }
+      .note_title {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .episode__content {
+        display: flex;
+        justify-content: center;
       }
     }
 

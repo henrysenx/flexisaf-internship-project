@@ -46,7 +46,7 @@ const CreateNote = ({ close, operation, updateItem }) => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <h3 className="header">
-        {operation === "create" ? "Create Form" : "Update Form"}
+        {operation === "create" ? "Create Note" : "Update Note"}
       </h3>
       <label htmlFor="title">Title</label>
       <StyledInput
@@ -55,7 +55,7 @@ const CreateNote = ({ close, operation, updateItem }) => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <label htmlFor="description">Description</label>
+      <label htmlFor="description">Note </label>
       <StyledTextArea
         name="description"
         value={description}
