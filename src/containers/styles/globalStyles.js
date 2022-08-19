@@ -27,7 +27,7 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const lightTheme = {
-  body: "#fff",
+  body: "#f1f9ec",
   text: "#121212",
   primary: "#6200ee",
 };

@@ -23,16 +23,16 @@ const CreateNoteDesc = ({ close, selectedItem }) => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <h3 className="header">Create Description</h3>
+      <h3 className="header">Add Note Item</h3>
 
-      <label htmlFor="description">Description</label>
+      <label htmlFor="description">Note</label>
       <StyledTextArea
         name="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         rows="5"
       />
-      <StyledButton type="submit">Add Description</StyledButton>
+      <StyledButton type="submit">Add Note</StyledButton>
     </StyledForm>
   );
 };

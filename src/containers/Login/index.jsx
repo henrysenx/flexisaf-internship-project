@@ -3,9 +3,8 @@ import LoginForm from "./Login";
 import { motion } from "framer-motion";
 import SignUpForm from "./signUp";
 import { Toggle } from "../Home/components/Toggle";
-import { useDarkMode } from "../styles/useDarkMode";
-import { lightTheme, darkTheme } from "../styles/globalStyles";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const BoxContainer = styled.div`
   width: 350px;
@@ -102,6 +101,7 @@ const expandingTransition = {
 const AccountBox = (props) => {
   const [isExpanded, setExpanded] = useState(false);
   const [active, setActive] = useState("signin");
+  const { theme } = useSelector((state) => state.NoteReducer);
 
   const playExpandingAnimation = () => {
     setExpanded(true);
@@ -131,7 +131,7 @@ const AccountBox = (props) => {
         flexDirection: "column",
       }}
     >
-      <BoxContainer>
+      <BoxContainer theme={theme}>
         <TopContainer>
           <BackDrop
             initial={false}
